@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Результаты</title>
+	<style>
+   html {
+    height: 100%;
+    background: lightskyblue;
+    color: darkblue;
+	   font-family:'Comic Sans MS'
+   }
+   li {
+    list-style-type: none;
+   }
+  </style>
+ </head>
+</head>
+
+<body>
+<center>
+
+	<h1>Визуализация графа и информация о нём</h1>
+	<p>Размер вершины показывает центральность по degree centrality, а цвет — разбиение на сообщества.</p>
+	<img src="{{url_for('static', filename='res.png')}}" width="400" height="300"/>
+
+	<ul>
+    {% for name, value in c.items() %}
+        <li>{{ name }} - {{ value }}</li>
+    {% endfor %}
+	</ul>
+
+	<ul>
+    {% for name, value in info.items() %}
+        <li>{{ name }} - {{ value }}</li>
+    {% endfor %}
+	</ul>
+
+	<p>Вы можете перейти на следующие страницы:</p>
+	{% for name, url in urls.items() %}
+	<li><a href="{{ url }}">{{ name }}</a></li>
+	{% endfor %}
+</center>
+</body>
+
+</html>
