@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Рыбки</title>
+  <style>
+   html {
+    height: 100%;
+    background: lightskyblue;
+    color: darkblue;
+   }
+  </style>
+ </head>
+
+<body>
+<center>
+	<h1 style="font-family:'Comic Sans MS', cursive">Привет! Здесь можно поработать с семантическим полем "рыбы" :)</h1>
+	<form>
+   		<p><select size="3" multiple name="fish">
+			<option disabled>Выберите стартовый узел</option>
+			<option value="Карась">Карась</option>
+			<option selected value="Карп">Карп</option>
+			<option value="Корюшка">Корюшка</option>
+			<option value="Лещ">Лещ</option>
+			<option value="Окунь">Окунь</option>
+			<option value="Сом">Сом</option>
+			<option value="Судак">Судак</option>
+			<option value="Щука">Щука</option>
+			<option value="Язь">Язь</option>
+   		</select></p>
+   		<p><input type="submit" value="Отправить"></p>
+  	</form>
+	<p style="font-family:'Comic Sans MS', cursive">К сожалению, ожидание может затянуться, но зато можно полюбоваться рыбками!</p>
+	<img src="{{url_for('static', filename='fish.gif')}}" width="600" height="400"/>
+	</center>
+</body>
+
+</html>
