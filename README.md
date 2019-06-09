@@ -13,4 +13,4 @@
 3|Газетный корпус|[_Код_](https://github.com/psaleksandrova/hseprog2018/blob/master/homeworks/hw3/homework3.ipynb)
 4|Сайт-анкета|[_Код_](https://github.com/psaleksandrova/hseprog2018/blob/master/homeworks/hw4/hw4.py)
 6|VK API|[_Код_](https://github.com/psaleksandrova/hseprog2018/blob/master/homeworks/hw6/HW6_VK.ipynb)
-7|Графы и word2vec|[_Папка_](https://github.com/psaleksandrova/hseprog2018/tree/master/homeworks/HW7)
+7|Графы и word2vec|[_Папка_](https://github.com/psaleksandrova/hseprog2018/tree/master/homeworks/hw7)
