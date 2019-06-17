@@ -5,6 +5,7 @@ import json
 import pandas
 import matplotlib.pyplot as plt
 from collections import Counter
+from json2html import json2html
 import nltk
 # nltk.download("punkt")
 
@@ -59,29 +60,18 @@ def index():
 @app.route('/search')
 def search():
     urls = {'Главная страница': url_for('index')}
-    texts = {}
     if request.args:
         word = request.args['word']
         dialect = request.args['dialect']
-
-        with open('words.csv', 'r', encoding='utf-8') as f:
-            lines = [l.strip() for l in f.readlines()]
-            for line in lines:
-                line = line.split('\t')
-                if line[0] == word and line[1] == dialect:
-                    name = line[2]
-                    ans = CONN.execute('SELECT * FROM texts WHERE name =(?)',
-                                       (name, ))
-                    texts[name] = ans.fetchone()
-        f.close
-        return redirect(url_for('thanks', urls=urls, texts=texts))
+        data = []
+        return redirect(url_for('res', urls=urls, data=data,
+                                word=word, dialect=dialect))
 
     return render_template('search.html', urls=urls)
 
 
 @app.route('/add')
 def add():
-
     if request.args:
         name = request.args['name']
         text = request.args['text']
@@ -94,12 +84,37 @@ def add():
     return render_template('add.html')
 
 
-@app.route('/thanks')
-def thanks():
+@app.route('/res')
+def res():
+    word = request.args['word']
+    dialect = request.args['dialect']
+    r = []
+    names = set()
+    with open('words.csv', 'r', encoding='utf-8') as f:
+        lines = [l.strip() for l in f.readlines()]
+        for line in lines:
+            line = line.split('\t')
+            if line[0] == word and line[1] == dialect:
+                name = line[2]
+                if name not in names:
+                    names.add(name)
+                    ans = CONN.execute('SELECT * FROM texts WHERE name =(?)',
+                                        (name,))
+                    text = ans.fetchone()
+                    r.append({'Название': name, 'Текст': text[0],
+                              'Наречие': text[1], 'Автор': text[2],
+                              'Собиратель': text[3], 'Год': text[4]})
+        if len(r) != 0:
+            data = json2html.convert(json=r)
+        else:
+            data = 'Ничего нет :('
+    f.close
+
     urls = {'Искать в корпусе': url_for('search'),
             'Добавить новые тексты в корпус': url_for('add'),
             'Узнать больше о корпусе': url_for('info')}
-    return render_template('index.html')
+    return render_template('res.html', urls=urls, data=data,
+                           word=word, dialect=dialect)
 
 
 @app.route('/info')
@@ -129,4 +144,7 @@ def info():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    import os
+    app.debug = True
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)

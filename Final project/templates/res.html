@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Корпус карельского языка</title>
+	<style>
+   html {
+    height: 100%;
+    background: steelblue;
+	   font-family: serif;
+   }
+   li {
+    list-style-type: none;
+   }
+  </style>
+</head>
+<body>
+<center>
+    <h1>Результаты поиска:</h1>
+	{{ data | safe}}
+
+     <p>Вы можете перейти на следующие страницы:</p>
+	<ul>
+		{% for name, url in urls.items() %}
+		<li><a href="{{ url }}">{{ name }}</a></li>
+		{% endfor %}
+	</ul>
+</center>
+</body>
+
+</html>
