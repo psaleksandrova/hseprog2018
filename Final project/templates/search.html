@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск по корпусу</title>
+	<style>
+   html {
+    height: 100%;
+    background: darkgrey;
+   }
+   li {
+    list-style-type: none;
+   }
+  </style>
+</head>
+<body>
+<center>
+	<em>
+		<form>
+		<label>Введите искомое слово<input type="text" name="word"> </label><br>
+			<p>Выберите нужные карельские наречия</p>
+			<input type="radio" required name="dialect" value="Собственно карельские">Собственно карельские<br>
+		<input type="radio" required name="dialect" value="Ливвиковские">Ливвиковские<br>
+		<input type="radio" required name="dialect" value="Людиковские">Людиковские<br>
+		<p><input type="submit" value="Отправить"></p>
+	</form>
+
+		{% for name, url in urls.items() %}
+		<li><a href="{{ url }}">{{ name }}</a></li>
+		{% endfor %}
+	</ul>
+		</em>
+	<img src="{{url_for('static', filename='img3.jpg')}}"/>
+</center>
+</body>
+
+</html>

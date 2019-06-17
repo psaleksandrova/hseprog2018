@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Корпус карельского языка</title>
+	<style>
+   html {
+    height: 100%;
+    background: lightskyblue;
+	   font-family: serif;
+   }
+   li {
+    list-style-type: none;
+   }
+  </style>
+</head>
+<body>
+<center>
+	<ul>
+		{% for name, text in texts.items() %}
+        <li>{{ name }} - {{ text }}</li>
+    {% endfor %}
+	</ul>
+	<ul>
+		{% for name, url in urls.items() %}
+		<li><a href="{{ url }}">{{ name }}</a></li>
+		{% endfor %}
+	</ul>
+</center>
+</body>
+
+</html>

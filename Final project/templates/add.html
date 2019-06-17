@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить в корпус</title>
+	<style>
+   html {
+    height: 100%;
+    background: darkgrey;
+   }
+   li {
+    list-style-type: none;
+   }
+  </style>
+</head>
+<body>
+<center>
+	<form>
+  <fieldset>
+    <legend>Новый текст</legend>
+	  <p>Как здорово, вы хотите добавить новый текст! Заполните, пожалуйста, следующие поля:</p>
+	  <label>Заголовок текста <input type="text" name="name"> </label><br>
+	  <p>Введите сам текст:<em>*</em></p>
+  <p><textarea name="text"></textarea></p>
+	  <p>И внесите следующие метаданные:</p>
+	  <p>На каком из наречий создан ваш текст</p>
+		<input type="radio" required name="dialect" value="Собственно карельские">Собственно карельские<br>
+		<input type="radio" required name="dialect" value="Ливвиковские">Ливвиковские<br>
+		<input type="radio" required name="dialect" value="Людиковские">Людиковские<br>
+	  <label>Автор(информант)<input type="text" name="author"> </label><br>
+	  <label>Собиратель<input type="text" name="writer"> </label><br>
+	  <label>Год создания<input type="int" name="year"> </label><br>
+  </fieldset>
+<p><input type="submit" value="Отправить"></p>
+
+	<img src="{{url_for('static', filename='img2.jpg')}}"/>
+</center>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Корпус карельского языка</title>
+	<style>
+   html {
+    height: 100%;
+    background: darkgrey;
+   }
+   li {
+    list-style-type: none;
+   }
+  </style>
+</head>
+<body>
+<center>
+	<em>
+		<h1>Наш корпус пока очень мал, но статистику мы Вам всё равно покажем!</h1>
+		<img src="{{url_for('static', filename='year.png')}}" width="400" height="300"/>
+        <img src="{{url_for('static', filename='dialect.png')}}" width="400" height="300"/>
+	<ul>
+		{% for name, url in urls.items() %}
+		<li><a href="{{ url }}">{{ name }}</a></li>
+		{% endfor %}
+	</ul>
+		</em>
+	<img src="{{url_for('static', filename='img4.jpg')}}" width="600" height="400"/>
+</center>
+</body>
+
+</html>

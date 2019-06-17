@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Корпус карельского языка</title>
+	<style>
+   html {
+    height: 100%;
+    background: darkgrey;
+   }
+   li {
+    list-style-type: none;
+   }
+  </style>
+</head>
+<body>
+<center>
+	<em>
+		<h1>Добро пожаловать в корпус карельского языка!</h1>
+		<p></p>
+	<ul>
+		{% for name, url in urls.items() %}
+		<li><a href="{{ url }}">{{ name }}</a></li>
+		{% endfor %}
+	</ul>
+		</em>
+	<img src="{{url_for('static', filename='img.jpg')}}"/>
+</center>
+</body>
+
+</html>
